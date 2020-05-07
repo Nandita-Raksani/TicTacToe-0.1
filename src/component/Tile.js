@@ -1,11 +1,12 @@
 import React from 'react';
+import StyleConstants from '../constants/StyleConstants';
 import '../App.css';
 
 const Tile = (props) => {
     return (
-        <button className={"tile-button"} onClick={props.onClick}>
+        <button className={StyleConstants.TITLE_BUTTON} onClick={props.onClick}>
             {props.value}
         </button>
     );
 }
-export default Tile;
+export default Tile; 

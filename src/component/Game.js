@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import Tile from './Tile';
+import Constants from '../constants/Constants';
+import StyleConstants from '../constants/StyleConstants';
 import '../App.css';
 
 const Game = () => {
     const [state, setState] = useState({
-        boardArray: Array(9).fill('')
+        boardArray: Array(Constants.NUMBER_OF_TILES).fill(Constants.EMPTY_VALUE)
     });
 
     const renderBoard = () => {
         let tileList = [];
-        for (let position = 0; position < 9; position++) {
+        for (let position = 0; position < Constants.NUMBER_OF_TILES; position++) {
             tileList.push(<li key={position}>
                 <Tile onClick={() => handleClick(position)} value={state.boardArray[position]} />
             </li>);
@@ -18,13 +20,13 @@ const Game = () => {
     }
     const handleClick = (position) => {
         const boardArray = state.boardArray.slice();
-        boardArray[position] = 'X';
+        boardArray[position] = Constants.SYMBOL_X;
         setState((prevState) => ({ ...prevState, boardArray: boardArray }));
     }
 
     return (
         <div>
-            <ul className="board">
+            <ul className = {StyleConstants.BOARD}>
                 {renderBoard()}
             </ul>
         </div>

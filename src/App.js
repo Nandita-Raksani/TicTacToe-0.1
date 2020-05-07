@@ -1,12 +1,14 @@
 import React from 'react';
 import Game from './component/Game';
+import Constants from './constants/Constants';
+import StyleConstants from './constants/StyleConstants';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-           Tic-Tac-Toe
+    <div className= {StyleConstants.APP}>
+      <header className={StyleConstants.APP_HEADER}>
+        {Constants.APP_TITLE}
       </header>
       <Game/>
     </div>
