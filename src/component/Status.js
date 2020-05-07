@@ -4,7 +4,7 @@ import Constants from '../constants/Constants';
 const Status = (props) => {
   const getStatus = () => {
     const { board, currentPlayer } = props;
-    const winner = isFirstRowCompletedByAPlayer(board) || isSecondRowCompletedByAPlayer(board) || isThirdRowCompletedByAPlayer(board);
+    const winner = isRowCompletedByAPlayer(board);
     if (winner && winner.player) {
       return Constants.WINNER + winner.player;
     } else {
@@ -12,22 +12,27 @@ const Status = (props) => {
     }
   };
 
+  const isRowCompletedByAPlayer = (board) => {
+    return isFirstRowCompletedByAPlayer(board) || isSecondRowCompletedByAPlayer(board)
+      || isThirdRowCompletedByAPlayer(board);
+  };
+
   const isFirstRowCompletedByAPlayer = (board) => {
     return isPositionsOccupiedBySamePlayer(board, Constants.FIRST_ROW_POSITIONS);
   };
 
   const isSecondRowCompletedByAPlayer = (board) => {
-     return isPositionsOccupiedBySamePlayer(board, Constants.SECOND_ROW_POSITIONS);
+    return isPositionsOccupiedBySamePlayer(board, Constants.SECOND_ROW_POSITIONS);
   };
 
   const isThirdRowCompletedByAPlayer = (board) => {
     return isPositionsOccupiedBySamePlayer(board, Constants.THIRD_ROW_POSITIONS);
   };
 
-  const isPositionsOccupiedBySamePlayer = (board, positions) =>{
+  const isPositionsOccupiedBySamePlayer = (board, positions) => {
     const [a, b, c] = positions;
     if (board && board[a] && board[a] === board[b] && board[a] === board[c]) {
-      return { player: board[a]};
+      return { player: board[a] };
     }
     return null;
   }
@@ -37,3 +42,4 @@ const Status = (props) => {
   );
 }
 export default Status;
+
