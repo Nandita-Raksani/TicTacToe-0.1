@@ -8,6 +8,7 @@ const Constants = {
     WINNER: "Winner is : ",
     FIRST_ROW_POSITIONS: [0, 1, 2],
     SECOND_ROW_POSITIONS: [3, 4, 5],
-    THIRD_ROW_POSITIONS: [6, 7, 8]
+    THIRD_ROW_POSITIONS: [6, 7, 8],
+    FIRST_COLUMN_POSITIONS: [0, 3, 6]
 };
 export default Constants;
