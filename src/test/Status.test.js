@@ -77,4 +77,16 @@ describe(("<Status/> functionality"), () => {
         let wrapper = shallow(<Status currentPlayer='X' board={board}/>);
         expect(wrapper.find('label').text()).toBe('Winner is : O');
     });
+
+    it("should declare X as winner if UpperLeft to LowerRight diagonal is completely filled by X ", () => {
+        let board = ['X','O','O','','X','','','','X'];
+        let wrapper = shallow(<Status currentPlayer='O' board={board}/>);
+        expect(wrapper.find('label').text()).toBe('Winner is : X');
+    });
+    
+    it("should declare O as winner if third column is completely filled by O ", () => {
+        let board = ['O','','X','X','O','X','','','O'];
+        let wrapper = shallow(<Status currentPlayer='X' board={board}/>);
+        expect(wrapper.find('label').text()).toBe('Winner is : O');
+    });
 });
