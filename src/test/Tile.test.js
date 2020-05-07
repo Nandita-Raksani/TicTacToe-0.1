@@ -26,4 +26,8 @@ describe(("<Tile/> component functionality"), () => {
         expect(wrapper.find('button').props()["data-pro"]).toBe('O');
         expect(wrapper.find("button").text()).toEqual('O');
     });
+    it("should not allow the already occupied tile to be clicked again", () => {
+        let wrapper = shallow(<Tile value='X' />);
+        expect(wrapper.find('button').props()["disabled"]).toBe('X');
+    });
 });
