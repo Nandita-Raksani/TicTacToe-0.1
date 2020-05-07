@@ -5,7 +5,7 @@ const Status = (props) => {
   const getStatus = () => {
     const { board, currentPlayer } = props;
     const winner = isRowCompletedByAPlayer(board) || isFirstColumnCompletedByAPlayer(board)
-      || isSecondColumnCompletedByAPlayer(board);
+      || isSecondColumnCompletedByAPlayer(board) || isThirdColumnCompletedByAPlayer(board);
     if (winner && winner.player) {
       return Constants.WINNER + winner.player;
     } else {
@@ -35,6 +35,10 @@ const Status = (props) => {
 
   const isSecondColumnCompletedByAPlayer = (board) => {
     return isPositionsOccupiedBySamePlayer(board, Constants.SECOND_COLUMN_POSITIONS);
+  };
+
+  const isThirdColumnCompletedByAPlayer = (board) => {
+    return isPositionsOccupiedBySamePlayer(board, Constants.THIRD_COLUMN_POSITIONS);
   };
 
   const isPositionsOccupiedBySamePlayer = (board, positions) => {
