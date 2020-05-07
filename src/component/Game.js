@@ -30,7 +30,8 @@ const Game = () => {
     return (
         <div>
             <div className={StyleConstants.STATUS}>
-                <Status currentPlayer={state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O} />
+                <Status currentPlayer={state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O}
+                 board={state.boardArray}/>
             </div>
             <ul className = {StyleConstants.BOARD}>
                 {renderBoard()}

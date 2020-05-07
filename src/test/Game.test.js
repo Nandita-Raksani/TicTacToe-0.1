@@ -49,4 +49,13 @@ describe(("<Game/> component functionality"), () => {
         expect(wrapper.find(Tile).at(1).find('button').text()).toBe('O');
         expect(wrapper.find(Status).find('label').text()).toBe('Next Player : X');
     })
+
+    it("Should display the winner", () => {
+        wrapper.find(Tile).at(0).find('button').simulate('click');
+        wrapper.find(Tile).at(3).find('button').simulate('click');
+        wrapper.find(Tile).at(1).find('button').simulate('click');
+        wrapper.find(Tile).at(4).find('button').simulate('click');
+        wrapper.find(Tile).at(2).find('button').simulate('click');
+        expect(wrapper.find(Status).find('label').text()).toBe('Winner is : X');
+    });
 });

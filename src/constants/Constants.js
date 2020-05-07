@@ -4,6 +4,7 @@ const Constants = {
     SYMBOL_O: "O",
     NUMBER_OF_TILES: 9,
     EMPTY_VALUE: "",
-    NEXT_PLAYER: "Next Player : "
+    NEXT_PLAYER: "Next Player : ",
+    WINNER: "Winner is : "
 };
 export default Constants;
