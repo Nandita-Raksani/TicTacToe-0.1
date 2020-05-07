@@ -12,12 +12,18 @@ describe(("<Tile/> component"), () => {
     });
     it("should have the button with style class", () => {
         expect(wrapper.find("button").hasClass('tile-button')).toEqual(true);
-    }); jest.fn()
+    });
 });
 
 describe(("<Tile/> component functionality"), () => {
     it("should display symbol X when value passed from Game is X", () => {
         let wrapper = shallow(<Tile value='X' />);
+        expect(wrapper.find('button').props()["data-pro"]).toBe('X');
         expect(wrapper.find("button").text()).toEqual('X');
+    });
+    it("should display symbol O when value passed from Game is O", () => {
+        let wrapper = shallow(<Tile value='O' />);
+        expect(wrapper.find('button').props()["data-pro"]).toBe('O');
+        expect(wrapper.find("button").text()).toEqual('O');
     });
 });

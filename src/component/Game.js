@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Tile from './Tile';
+import Status from './Status';
 import Constants from '../constants/Constants';
 import StyleConstants from '../constants/StyleConstants';
 import '../App.css';
@@ -28,6 +29,9 @@ const Game = () => {
 
     return (
         <div>
+            <div className={StyleConstants.STATUS}>
+                <Status currentPlayer={state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O} />
+            </div>
             <ul className = {StyleConstants.BOARD}>
                 {renderBoard()}
             </ul>

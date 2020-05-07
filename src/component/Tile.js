@@ -4,7 +4,7 @@ import '../App.css';
 
 const Tile = (props) => {
     return (
-        <button className={StyleConstants.TITLE_BUTTON} onClick={props.onClick}>
+        <button className={StyleConstants.TITLE_BUTTON} onClick={props.onClick} data-pro={props.value}>
             {props.value}
         </button>
     );

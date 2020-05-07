@@ -49,3 +49,13 @@
 button.tile-button[data-pro="X"] {
   color: red;
 }
+
+button.tile-button[data-pro="O"] {
+  color: green;
+}
+
+.status {
+  margin: auto;
+  color: #424242;
+  margin-bottom: 20px;
+}
