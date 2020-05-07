@@ -7,6 +7,7 @@ const Constants = {
     NEXT_PLAYER: "Next Player : ",
     WINNER: "Winner is : ",
     FIRST_ROW_POSITIONS: [0, 1, 2],
-    SECOND_ROW_POSITIONS: [3, 4, 5]
+    SECOND_ROW_POSITIONS: [3, 4, 5],
+    THIRD_ROW_POSITIONS: [6, 7, 8]
 };
 export default Constants;

@@ -4,7 +4,7 @@ import Constants from '../constants/Constants';
 const Status = (props) => {
   const getStatus = () => {
     const { board, currentPlayer } = props;
-    const winner = isFirstRowCompletedByAPlayer(board) || isSecondRowCompletedByAPlayer(board);
+    const winner = isFirstRowCompletedByAPlayer(board) || isSecondRowCompletedByAPlayer(board) || isThirdRowCompletedByAPlayer(board);
     if (winner && winner.player) {
       return Constants.WINNER + winner.player;
     } else {
@@ -18,6 +18,10 @@ const Status = (props) => {
 
   const isSecondRowCompletedByAPlayer = (board) => {
      return isPositionsOccupiedBySamePlayer(board, Constants.SECOND_ROW_POSITIONS);
+  };
+
+  const isThirdRowCompletedByAPlayer = (board) => {
+    return isPositionsOccupiedBySamePlayer(board, Constants.THIRD_ROW_POSITIONS);
   };
 
   const isPositionsOccupiedBySamePlayer = (board, positions) =>{
