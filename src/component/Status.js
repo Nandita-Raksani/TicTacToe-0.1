@@ -13,19 +13,20 @@ const Status = (props) => {
   };
 
   const isFirstRowCompletedByAPlayer = (board) => {
-    const [a, b, c] = Constants.FIRST_ROW_POSITIONS;
-    if (board && board[a] && board[a] === board[b] && board[a] === board[c]) {
-      return { player: board[a]};
-    }
-    return null;
+    return isPositionsOccupiedBySamePlayer(board, Constants.FIRST_ROW_POSITIONS);
   };
+
   const isSecondRowCompletedByAPlayer = (board) => {
-    const [a, b, c] = Constants.SECOND_ROW_POSITIONS;
+     return isPositionsOccupiedBySamePlayer(board, Constants.SECOND_ROW_POSITIONS);
+  };
+
+  const isPositionsOccupiedBySamePlayer = (board, positions) =>{
+    const [a, b, c] = positions;
     if (board && board[a] && board[a] === board[b] && board[a] === board[c]) {
       return { player: board[a]};
     }
     return null;
-  };
+  }
 
   return (
     <label>{getStatus()}</label>
