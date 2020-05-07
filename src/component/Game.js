@@ -22,7 +22,7 @@ const Game = () => {
     const handleClick = (position) => {
         const boardArray = state.boardArray.slice();
         boardArray[position] = Constants.SYMBOL_X;
-        boardArray[position] = state.isNextSymbolX ? Constants.SYMBOL_X : 'O';
+        boardArray[position] = state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O;
         setState((prevState) => ({ ...prevState, boardArray: boardArray,  isNextSymbolX: !state.isNextSymbolX }));
     }
 
