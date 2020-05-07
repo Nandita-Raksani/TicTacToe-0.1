@@ -28,4 +28,10 @@ describe(("<Game/> component functionality"), () => {
         wrapper.find(Tile).at(0).find('button').simulate('click');
         expect(wrapper.find(Tile).at(0).find('button').text()).toBe('X');
     })
+
+    it("Player O should be given next move", () => {
+        wrapper.find(Tile).at(0).find('button').simulate('click');
+        wrapper.find(Tile).at(1).find('button').simulate('click');
+        expect(wrapper.find(Tile).at(1).find('button').text()).toBe('O');
+    })
 });
