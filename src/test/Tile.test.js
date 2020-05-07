@@ -7,8 +7,15 @@ describe(("<Tile/> component"), () => {
         let wrapper = shallow(<Tile />);
         expect(wrapper).toMatchSnapshot();
     });
-    it("should have the title", () => {
+    it("should have the button with style class", () => {
         let wrapper = shallow(<Tile />);
         expect(wrapper.find("button").hasClass('tile-button')).toEqual(true);
+    }); jest.fn()
+});
+
+describe(("<Tile/> component functionality"), () => {
+    it("should display symbol X when value passed from Game is X", () => {
+        let wrapper = shallow(<Tile value='X' />);
+        expect(wrapper.find("button").text()).toEqual('X');
     });
 });

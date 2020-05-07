@@ -10,7 +10,7 @@ describe(("<Game/> component"), () => {
     });
 });
 
-describe(("<Tile/> Tile functionality"), () => {
+describe(("<Game/> component functionality"), () => {
     it("Should render 9 empty Tiles", () => {
         let wrapper = mount(<Game />);
         expect(wrapper.find(Tile).length).toBe(9);
@@ -18,5 +18,11 @@ describe(("<Tile/> Tile functionality"), () => {
         wrapper.find(Tile).forEach(square => {
             expect(square.find('button').text()).toBe('');
         });
+    })
+
+    it("Player X should be given first move", () => {
+        let wrapper = mount(<Game />);
+        wrapper.find(Tile).at(0).find('button').simulate('click');
+        expect(wrapper.find(Tile).at(0).find('button').text()).toBe('X');
     })
 });
