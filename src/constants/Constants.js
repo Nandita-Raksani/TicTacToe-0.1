@@ -5,6 +5,8 @@ const Constants = {
     NUMBER_OF_TILES: 9,
     EMPTY_VALUE: "",
     NEXT_PLAYER: "Next Player : ",
-    WINNER: "Winner is : "
+    WINNER: "Winner is : ",
+    FIRST_ROW_POSITIONS: [0, 1, 2],
+    SECOND_ROW_POSITIONS: [3, 4, 5]
 };
 export default Constants;

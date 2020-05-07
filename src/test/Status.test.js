@@ -19,12 +19,22 @@ describe(("<Status/> functionality"), () => {
     });
     it("should declare X as winner if first row is completely filled by X ", () => {
         let board = ['X','X','X','O','O','','','',''];
-        let wrapper = shallow(<Status currentPlayer='X' board={board}/>);
+        let wrapper = shallow(<Status currentPlayer='O' board={board}/>);
         expect(wrapper.find('label').text()).toBe('Winner is : X');
     });
     it("should declare O as winner if first row is completely filled by O ", () => {
         let board = ['O','O','O','X','X','','','X',''];
+        let wrapper = shallow(<Status currentPlayer='X' board={board}/>);
+        expect(wrapper.find('label').text()).toBe('Winner is : O');
+    });
+    it("should declare X as winner if second row is completely filled by X ", () => {
+        let board = ['O','','O','X','X','X','','',''];
         let wrapper = shallow(<Status currentPlayer='O' board={board}/>);
+        expect(wrapper.find('label').text()).toBe('Winner is : X');
+    });
+    it("should declare O as winner if second row is completely filled by O ", () => {
+        let board = ['X','','X','O','O','O','','X',''];
+        let wrapper = shallow(<Status currentPlayer='X' board={board}/>);
         expect(wrapper.find('label').text()).toBe('Winner is : O');
     });
 });
