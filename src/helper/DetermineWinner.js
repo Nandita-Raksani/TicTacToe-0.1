@@ -53,7 +53,7 @@ const isUpperRightToLowerLeftDiagonalCompletedByAPlayer = (board) => {
 const isPositionsOccupiedBySamePlayer = (board, positions) => {
     const [a, b, c] = positions;
     if (board && board[a] && board[a] === board[b] && board[a] === board[c]) {
-        return { player: board[a] };
+        return { player: board[a], positions: [a, b, c]};
     }
     return null;
 }

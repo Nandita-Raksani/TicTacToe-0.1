@@ -4,8 +4,8 @@ import '../App.css';
 
 const Tile = (props) => {
     return (
-        <button className={StyleConstants.TITLE_BUTTON} onClick={props.onClick}
-            disabled={props.value} data-pro={props.value}>
+        <button className={StyleConstants.TILE_BUTTON + (props.isWinning ? StyleConstants.TILE_WINNING : null)} onClick={props.onClick}
+            disabled={props.isGameOver || props.value} data-pro={props.value}>
             {props.value}
         </button>
     );

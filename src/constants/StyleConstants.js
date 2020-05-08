@@ -3,7 +3,8 @@ const StyleConstants = {
     APP : "App",
     APP_HEADER: "App-header",
     ROOT : "root",
-    TITLE_BUTTON : "tile-button",
-    STATUS: "status"
+    TILE_BUTTON : "tile-button ",
+    STATUS: "status",
+    TILE_WINNING: "tile-winning"
 };
 export default StyleConstants;

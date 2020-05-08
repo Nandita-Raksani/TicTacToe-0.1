@@ -57,5 +57,30 @@ describe(("<Game/> component functionality"), () => {
         wrapper.find(Tile).at(4).find('button').simulate('click');
         wrapper.find(Tile).at(2).find('button').simulate('click');
         expect(wrapper.find(Status).find('label').text()).toBe('Winner is : X');
+        const winningPositions = [0,1,2];
+        
+        const tileList = wrapper.find(Tile);
+        tileList.forEach(myFunction)
+
+        function myFunction(item, index) {
+            if(winningPositions.includes(index)){
+                expect(item.find("button").hasClass('tile-winning')).toBeTruthy();
+            } else {
+                expect(item.find("button").hasClass('tile-winning')).toBeFalsy();
+            }
+        }
     });
+
+    it("Should not allow next turn to be played on game over", () => {
+        wrapper.find(Tile).at(0).find('button').simulate('click');
+        wrapper.find(Tile).at(3).find('button').simulate('click');
+        wrapper.find(Tile).at(1).find('button').simulate('click');
+        wrapper.find(Tile).at(4).find('button').simulate('click');
+        wrapper.find(Tile).at(2).find('button').simulate('click');
+        const tileList = wrapper.find(Tile);
+        tileList.forEach(tile => {
+            expect(tile.find('button').props()["disabled"]).toBeTruthy();
+        });
+    });
+
 });

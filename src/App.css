@@ -59,3 +59,7 @@ button.tile-button[data-pro="O"] {
   color: #424242;
   margin-bottom: 20px;
 }
+
+.tile-winning:disabled{
+  background-color: yellow;
+}

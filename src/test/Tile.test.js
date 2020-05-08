@@ -11,7 +11,7 @@ describe(("<Tile/> component"), () => {
         expect(wrapper).toMatchSnapshot();
     });
     it("should have the button with style class", () => {
-        expect(wrapper.find("button").hasClass('tile-button')).toEqual(true);
+        expect(wrapper.find("button").hasClass('tile-button')).toBeTruthy();
     });
 });
 
@@ -28,6 +28,10 @@ describe(("<Tile/> component functionality"), () => {
     });
     it("should not allow the already occupied tile to be clicked again", () => {
         let wrapper = shallow(<Tile value='X' />);
-        expect(wrapper.find('button').props()["disabled"]).toBe('X');
+        expect(wrapper.find('button').props()["disabled"]).toBeTruthy();
+    });
+    it("Should not allow next turn to be played on game over", () => {
+        let wrapper = shallow(<Tile value='X' />);
+        expect(wrapper.find('button').hasClass('tile-winning')).toBeTruthy();
     });
 });
