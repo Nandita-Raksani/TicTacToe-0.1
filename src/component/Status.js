@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Constants from '../constants/Constants';
 import determineWinner from '../helper/DetermineWinner';
+import isDraw from '../helper/DetermineDraw';
 
 const Status = (props) => {
   const [state, setState] = useState({
@@ -29,16 +30,6 @@ const Status = (props) => {
       getStatus();
     }
   }, [props, state.isGameOver])
-
-  const isDraw = (board) => {
-    if (board) {
-      for (var i = 0; i < board.length; i++) {
-        if (board[i] === Constants.EMPTY_VALUE)
-          return false;
-      }
-      return true;
-    }
-  };
 
   return (
     <label>{state.gameStatus}</label>
