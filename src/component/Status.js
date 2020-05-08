@@ -11,16 +11,16 @@ const Status = (props) => {
 
   useEffect(() => {
     const getStatus = () => {
-      const { board, currentPlayer, onPlayerWon } = props;
+      const { board, currentPlayer, onGameDrawOrWon } = props;
       const winner = determineWinner(board);
       const draw = isDraw(board);
 
       if (winner && winner.player) {
         setState((prevState) => ({ ...prevState, isGameOver: true, gameStatus: Constants.WINNER + winner.player }));
-        onPlayerWon(winner.positions);
+        onGameDrawOrWon(winner.positions);
       } else if (draw) {
         setState((prevState) => ({ ...prevState, isGameOver: true, gameStatus: Constants.GAME_DRAW }));
-        onPlayerWon([]);
+        onGameDrawOrWon([]);
       } else {
         setState((prevState) => ({ ...prevState, isGameOver: false, gameStatus: Constants.NEXT_PLAYER + (currentPlayer) }));
       }

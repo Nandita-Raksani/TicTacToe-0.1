@@ -49,7 +49,7 @@ const Game = () => {
             <div className={StyleConstants.STATUS}>
                 <Status currentPlayer={state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O}
                     board={state.boardArray}
-                    onPlayerWon={(winningPosition) => handlePlayerWon(winningPosition)} />
+                    onGameDrawOrWon={(winningPosition) => handlePlayerWon(winningPosition)} />
             </div>
             <ul className={StyleConstants.BOARD}>
                 {renderBoard()}
