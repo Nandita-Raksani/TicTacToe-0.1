@@ -113,4 +113,10 @@ describe(("<Status/> functionality"), () => {
         expect(onPlayerWonMockFn).toHaveBeenCalledTimes(1);
         expect(wrapper.find('label').text()).toBe('Winner is : X');
     })
+
+    it("should be draw when all tiles are completely filled and no winner", () => {
+        let board = ['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'];
+        let wrapper = mount(<Status currentPlayer='X' board={board} onPlayerWon={jest.fn()} />);
+        expect(wrapper.find('label').text()).toBe('Game is draw!');
+    });
 });

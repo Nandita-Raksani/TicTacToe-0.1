@@ -12,9 +12,14 @@ const Status = (props) => {
     const getStatus = () => {
       const { board, currentPlayer, onPlayerWon } = props;
       const winner = determineWinner(board);
+      const draw = isDraw(board);
+
       if (winner && winner.player) {
         setState((prevState) => ({ ...prevState, isGameOver: true, gameStatus: Constants.WINNER + winner.player }));
         onPlayerWon(winner.positions);
+      } else if (draw) {
+        setState((prevState) => ({ ...prevState, isGameOver: true, gameStatus: Constants.GAME_DRAW }));
+        onPlayerWon([]);
       } else {
         setState((prevState) => ({ ...prevState, isGameOver: false, gameStatus: Constants.NEXT_PLAYER + (currentPlayer) }));
       }
@@ -24,6 +29,16 @@ const Status = (props) => {
       getStatus();
     }
   }, [props, state.isGameOver])
+
+  const isDraw = (board) => {
+    if (board) {
+      for (var i = 0; i < board.length; i++) {
+        if (board[i] === Constants.EMPTY_VALUE)
+          return false;
+      }
+      return true;
+    }
+  };
 
   return (
     <label>{state.gameStatus}</label>
