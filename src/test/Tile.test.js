@@ -31,7 +31,7 @@ describe(("<Tile/> component functionality"), () => {
         expect(wrapper.find('button').props()["disabled"]).toBeTruthy();
     });
     it("Should not allow next turn to be played on game over", () => {
-        let wrapper = shallow(<Tile value='X' />);
+        let wrapper = shallow(<Tile value='X' isWinning={true} />);
         expect(wrapper.find('button').hasClass('tile-winning')).toBeTruthy();
     });
 });

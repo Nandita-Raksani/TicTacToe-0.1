@@ -5,6 +5,8 @@ const StyleConstants = {
     ROOT : "root",
     TILE_BUTTON : "tile-button ",
     STATUS: "status",
-    TILE_WINNING: "tile-winning"
+    TILE_WINNING: "tile-winning",
+    RESTART: "restart",
+    RESTART_BUTTON: "restart-button"
 };
 export default StyleConstants;

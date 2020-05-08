@@ -18,8 +18,8 @@ const Game = () => {
         for (let position = 0; position < Constants.NUMBER_OF_TILES; position++) {
             tileList.push(<li key={position}>
                 <Tile onClick={() => handleClick(position)} value={state.boardArray[position]}
-                isGameOver={state.gameOver}
-                isWinning={state.winningPositions && state.winningPositions.includes(position)}/>
+                    isGameOver={state.gameOver}
+                    isWinning={state.winningPositions && state.winningPositions.includes(position)} />
             </li>);
         }
         return tileList;
@@ -28,23 +28,35 @@ const Game = () => {
         const boardArray = state.boardArray.slice();
         boardArray[position] = Constants.SYMBOL_X;
         boardArray[position] = state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O;
-        setState((prevState) => ({ ...prevState, boardArray: boardArray,  isNextSymbolX: !state.isNextSymbolX }));
+        setState((prevState) => ({ ...prevState, boardArray: boardArray, isNextSymbolX: !state.isNextSymbolX }));
     }
 
     const handlePlayerWon = (winningPosition) => {
-        setState((prevState) => ({ ...prevState, gameOver: true, winningPositions: winningPosition}));
+        setState((prevState) => ({ ...prevState, gameOver: true, winningPositions: winningPosition }));
     }
+
+    const reset = () => {
+        setState({
+            boardArray: Array(9).fill(Constants.EMPTY_VALUE),
+            xIsNext: true,
+            gameOver: false,
+            winningPositions: []
+        });
+    };
 
     return (
         <div>
             <div className={StyleConstants.STATUS}>
                 <Status currentPlayer={state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O}
-                 board={state.boardArray}
-                 onPlayerWon={(winningPosition) => handlePlayerWon(winningPosition)}/>
+                    board={state.boardArray}
+                    onPlayerWon={(winningPosition) => handlePlayerWon(winningPosition)} />
             </div>
-            <ul className = {StyleConstants.BOARD}>
+            <ul className={StyleConstants.BOARD}>
                 {renderBoard()}
             </ul>
+            <div className={StyleConstants.RESTART}>
+                <button className={StyleConstants.RESTART_BUTTON} type="Submit" onClick={() => reset()}>Reset</button>
+            </div>
         </div>
     );
 }

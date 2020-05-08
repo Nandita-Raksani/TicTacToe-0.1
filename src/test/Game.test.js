@@ -34,7 +34,7 @@ describe(("<Game/> component functionality"), () => {
     it("Player O should be given next move", () => {
         wrapper.find(Tile).at(0).find('button').simulate('click');
         wrapper.find(Tile).at(1).find('button').simulate('click');
-        
+
         expect(wrapper.find(Tile).at(1).find('button').text()).toBe('O');
     })
 
@@ -57,13 +57,13 @@ describe(("<Game/> component functionality"), () => {
         wrapper.find(Tile).at(4).find('button').simulate('click');
         wrapper.find(Tile).at(2).find('button').simulate('click');
         expect(wrapper.find(Status).find('label').text()).toBe('Winner is : X');
-        const winningPositions = [0,1,2];
-        
+        const winningPositions = [0, 1, 2];
+
         const tileList = wrapper.find(Tile);
         tileList.forEach(myFunction)
 
         function myFunction(item, index) {
-            if(winningPositions.includes(index)){
+            if (winningPositions.includes(index)) {
                 expect(item.find("button").hasClass('tile-winning')).toBeTruthy();
             } else {
                 expect(item.find("button").hasClass('tile-winning')).toBeFalsy();
@@ -80,6 +80,15 @@ describe(("<Game/> component functionality"), () => {
         const tileList = wrapper.find(Tile);
         tileList.forEach(tile => {
             expect(tile.find('button').props()["disabled"]).toBeTruthy();
+        });
+    });
+
+    it("Should reset game to initial state on clicking Reset button", () => {
+        expect(wrapper.find('button').at(9).hasClass('restart-button')).toBeTruthy();
+        wrapper.find('button').at(9).simulate('click');
+        const tileList = wrapper.find(Tile);
+        tileList.forEach(tile => {
+            expect(tile.find('button').text()).toBe('');
         });
     });
 
