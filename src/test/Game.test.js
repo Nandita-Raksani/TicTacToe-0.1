@@ -9,6 +9,12 @@ describe(("<Game/> component"), () => {
     it("should render correctly", () => {
         expect(wrapper).toMatchSnapshot();
     });
+    it("should render styles correctly",() =>{
+        expect(wrapper.find("ul").hasClass('board')).toBeTruthy();
+        expect(wrapper.find("div").at(1).hasClass('status')).toBeTruthy();
+        expect(wrapper.find("div").at(2).hasClass('restart')).toBeTruthy();
+        expect(wrapper.find('button').hasClass('restart-button')).toBeTruthy();
+    })
 });
 
 describe(("<Game/> component functionality"), () => {
@@ -60,9 +66,9 @@ describe(("<Game/> component functionality"), () => {
         const winningPositions = [0, 1, 2];
 
         const tileList = wrapper.find(Tile);
-        tileList.forEach(myFunction)
+        tileList.forEach(checkStyles);
 
-        function myFunction(item, index) {
+        function checkStyles(item, index) {
             if (winningPositions.includes(index)) {
                 expect(item.find("button").hasClass('tile-winning')).toBeTruthy();
             } else {
@@ -84,7 +90,12 @@ describe(("<Game/> component functionality"), () => {
     });
 
     it("Should reset game to initial state on clicking Reset button", () => {
-        expect(wrapper.find('button').at(9).hasClass('restart-button')).toBeTruthy();
+        wrapper.find(Tile).at(0).find('button').simulate('click');
+        wrapper.find(Tile).at(3).find('button').simulate('click');
+        wrapper.find(Tile).at(1).find('button').simulate('click');
+        wrapper.find(Tile).at(4).find('button').simulate('click');
+        wrapper.find(Tile).at(2).find('button').simulate('click');
+
         wrapper.find('button').at(9).simulate('click');
         const tileList = wrapper.find(Tile);
         tileList.forEach(tile => {

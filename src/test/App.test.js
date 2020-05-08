@@ -16,6 +16,11 @@ describe(("<App/> component"), () => {
     expect(wrapper.find("header").text()).toEqual("Tic-Tac-Toe");
   });
 
+  it("should render styles correctly", () => {
+    expect(wrapper.find("div").hasClass('App')).toBeTruthy();
+    expect(wrapper.find("header").hasClass('App-header')).toBeTruthy();
+  });
+  
   it("should load Game component", () => {
     expect(wrapper.find(Game)).toBeDefined();
   });

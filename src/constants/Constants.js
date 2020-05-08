@@ -14,6 +14,7 @@ const Constants = {
     THIRD_COLUMN_POSITIONS: [2, 5, 8],
     UPPER_LEFT_TO_LOWER_RIGHT_DIAGONAL_POSITIONS: [0, 4, 8],
     UPPER_RIGHT_TO_LOWER_LEFT_DIAGONAL_POSITIONS: [2, 4, 6],
-    GAME_DRAW: "Game is draw!"
+    GAME_DRAW: "Game is draw!",
+    INDEX_NOT_FOUND: -1
 };
 export default Constants;

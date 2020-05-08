@@ -17,21 +17,21 @@ describe(("<Tile/> component"), () => {
 
 describe(("<Tile/> component functionality"), () => {
     it("should display symbol X when value passed from Game is X", () => {
-        let wrapper = shallow(<Tile value='X' />);
+        const wrapper = shallow(<Tile value='X' />);
         expect(wrapper.find('button').props()["data-pro"]).toBe('X');
         expect(wrapper.find("button").text()).toEqual('X');
     });
     it("should display symbol O when value passed from Game is O", () => {
-        let wrapper = shallow(<Tile value='O' />);
+        const wrapper = shallow(<Tile value='O' />);
         expect(wrapper.find('button').props()["data-pro"]).toBe('O');
         expect(wrapper.find("button").text()).toEqual('O');
     });
     it("should not allow the already occupied tile to be clicked again", () => {
-        let wrapper = shallow(<Tile value='X' />);
+        const wrapper = shallow(<Tile value='X' />);
         expect(wrapper.find('button').props()["disabled"]).toBeTruthy();
     });
     it("Should not allow next turn to be played on game over", () => {
-        let wrapper = shallow(<Tile value='X' isWinning={true} />);
+        const wrapper = shallow(<Tile value='X' isWinning={true} />);
         expect(wrapper.find('button').hasClass('tile-winning')).toBeTruthy();
     });
 });

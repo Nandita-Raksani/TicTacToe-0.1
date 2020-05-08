@@ -4,9 +4,7 @@ import determineWinner from '../helper/DetermineWinner';
 import isDraw from '../helper/DetermineDraw';
 
 const Status = (props) => {
-  const [state, setState] = useState({
-    gameStatus: Constants.NEXT_PLAYER + Constants.SYMBOL_X
-  });
+  const [state, setState] = useState({});
 
   useEffect(() => {
     const getStatus = () => {
@@ -19,7 +17,7 @@ const Status = (props) => {
         onGameDrawOrWon(winner.positions);
       } else if (draw) {
         setState((prevState) => ({ ...prevState, gameStatus: Constants.GAME_DRAW }));
-        onGameDrawOrWon([]);
+        onGameDrawOrWon();
       } else {
         setState((prevState) => ({ ...prevState, gameStatus: Constants.NEXT_PLAYER + (currentPlayer) }));
       }

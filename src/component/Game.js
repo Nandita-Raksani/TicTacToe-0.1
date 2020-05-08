@@ -10,7 +10,7 @@ const Game = () => {
         boardArray: Array(Constants.NUMBER_OF_TILES).fill(Constants.EMPTY_VALUE),
         isNextSymbolX: true,
         gameOver: false,
-        winningPositions: Array(3).fill(Constants.EMPTY_VALUE)
+        winningPositions: []
     });
 
     const renderBoard = () => {
