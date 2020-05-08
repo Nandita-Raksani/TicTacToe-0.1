@@ -89,7 +89,9 @@ describe(("<Game/> component functionality"), () => {
         const tileList = wrapper.find(Tile);
         tileList.forEach(tile => {
             expect(tile.find('button').text()).toBe('');
+            expect(tile.find('button').props()["disabled"]).toBeFalsy();
         });
+        expect(wrapper.find(Status).find('label').text()).toBe('Next Player : X');
     });
 
 });

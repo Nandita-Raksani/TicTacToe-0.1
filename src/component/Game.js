@@ -38,7 +38,7 @@ const Game = () => {
     const reset = () => {
         setState({
             boardArray: Array(9).fill(Constants.EMPTY_VALUE),
-            xIsNext: true,
+            isNextSymbolX: true,
             gameOver: false,
             winningPositions: []
         });
@@ -48,7 +48,7 @@ const Game = () => {
         <div>
             <div className={StyleConstants.STATUS}>
                 <Status currentPlayer={state.isNextSymbolX ? Constants.SYMBOL_X : Constants.SYMBOL_O}
-                    board={state.boardArray}
+                    board={state.boardArray} isGameOver={state.gameOver}
                     onGameDrawOrWon={(winningPosition) => handlePlayerWon(winningPosition)} />
             </div>
             <ul className={StyleConstants.BOARD}>
