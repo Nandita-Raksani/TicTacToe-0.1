@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Constants from '../constants/Constants';
 import determineWinner from '../helper/DetermineWinner';
 import isDraw from '../helper/DetermineDraw';
@@ -8,7 +9,7 @@ const Status = (props) => {
 
   useEffect(() => {
     const getStatus = () => {
-      const { board, currentPlayer, onGameDrawOrWon} = props;
+      const { board, currentPlayer, onGameDrawOrWon } = props;
       const winner = determineWinner(board);
       const draw = isDraw(board);
 
@@ -32,5 +33,11 @@ const Status = (props) => {
     <label>{state.gameStatus}</label>
   );
 }
+Status.propTypes = {
+  currentPlayer: PropTypes.string.isRequired,
+  board: PropTypes.array.isRequired,
+  isGameOver: PropTypes.bool.isRequired,
+  onGameDrawOrWon: PropTypes.func.isRequired
+};
 export default Status;
 

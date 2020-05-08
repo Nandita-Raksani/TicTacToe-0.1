@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 describe(("<Tile/> component"), () => {
     let wrapper;
     beforeEach(() => {
-        wrapper = shallow(<Tile />);
+        wrapper = shallow(<Tile value='X' isWinning={false} onClick={jest.fn()} isGameOver={false}/>);
     });
     it("should render correctly", () => {
         expect(wrapper).toMatchSnapshot();
@@ -17,21 +17,21 @@ describe(("<Tile/> component"), () => {
 
 describe(("<Tile/> component functionality"), () => {
     it("should display symbol X when value passed from Game is X", () => {
-        const wrapper = shallow(<Tile value='X' />);
+        const wrapper = shallow(<Tile value='X' isWinning={false} onClick={jest.fn()} isGameOver={false}/>);
         expect(wrapper.find('button').props()["data-pro"]).toBe('X');
         expect(wrapper.find("button").text()).toEqual('X');
     });
     it("should display symbol O when value passed from Game is O", () => {
-        const wrapper = shallow(<Tile value='O' />);
+        const wrapper = shallow(<Tile value='O' isWinning={false} onClick={jest.fn()} isGameOver={false}/>);
         expect(wrapper.find('button').props()["data-pro"]).toBe('O');
         expect(wrapper.find("button").text()).toEqual('O');
     });
     it("should not allow the already occupied tile to be clicked again", () => {
-        const wrapper = shallow(<Tile value='X' />);
+        const wrapper = shallow(<Tile value='X' isWinning={false} onClick={jest.fn()} isGameOver={false}/>);
         expect(wrapper.find('button').props()["disabled"]).toBeTruthy();
     });
     it("Should not allow next turn to be played on game over", () => {
-        const wrapper = shallow(<Tile value='X' isWinning={true} />);
+        const wrapper = shallow(<Tile value='X' isWinning={true} onClick={jest.fn()} isGameOver={true}/>);
         expect(wrapper.find('button').hasClass('tile-winning')).toBeTruthy();
     });
 });

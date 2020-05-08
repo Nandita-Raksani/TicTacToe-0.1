@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import StyleConstants from '../constants/StyleConstants';
 import '../App.css';
 
@@ -10,4 +11,10 @@ const Tile = (props) => {
         </button>
     );
 }
+Tile.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    isGameOver: PropTypes.bool.isRequired,
+    isWinning: PropTypes.bool.isRequired
+};
 export default Tile; 
